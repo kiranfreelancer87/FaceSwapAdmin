@@ -1,0 +1,89 @@
+<div class="row" *ngIf="!showcard && !updateImageDiv">
+    <div class="col-sm-12">
+        <div class="card" [formGroup]="searchForm">
+            <div class="card-header">
+                <strong>Image Uploader</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-6">
+                        <label for="category">Category</label>
+                        <select class="form-control" formControlName="catIdFc">
+                            <option *ngFor="let cat of allCategories" [value]="cat.id">
+                                {{ cat.category }}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback"> This is required !! </div>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <button type="button" class="btn btn-primary mt-3" (click)="onCategoryChange()">Search Image</button>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <button type="button" class="btn btn-primary mt-3" (click)="addImage()">
+                            Add Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="showcard">
+    <div class="col-sm-12">
+        <div class="card" [formGroup]="uploadForm">
+            <div class="card-header">
+                <strong>Image Uploader</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-6">
+                        <label for="category">Category</label>
+                        <select class="form-control" formControlName="catIdFc">
+                            <option *ngFor="let cat of allCategories" [value]="cat.id">
+                                {{ cat.category }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control" (change)="onFileChange($event)">
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <button type="button" class="btn btn-primary mt-3" (click)="upload()">
+                            Upload Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Image Gallery</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-4" *ngFor="let image of images">
+                        <div class="image-card">
+                            <img class="card-img-top"
+                                 [src]="getImageUrl(image.image_url)"
+                                 alt="Image"
+                                 style="width: 18rem; height: 10rem;">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <button class="btn btn-sm btn-danger" (click)="deleteImage(image)">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

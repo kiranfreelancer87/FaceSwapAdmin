@@ -1,0 +1,68 @@
+<div class="loader-overlay" *ngIf="loader">
+  <div class="d-flex justify-content-center align-items-center full-screen">
+      <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+</div>
+<div class="content" [class.blur]="loader">
+  <div class="auth-wrapper">
+    <div class="auth-content">
+      <div class="card">
+        <div class="row align-items-center text-center mt-2">
+          <div class="col-md-12">
+            <div class="card-body">
+              <h4 class="mb-3 f-w-400">Signin</h4>
+              <form action="javascript:" class="was-validated"  (ngSubmit)="onSubmit()">
+                <div class="input-group mb-4">
+                  <span class="input-group-text" id="basic-addon1"><i class="feather icon-mail"></i></span>
+                  <input type="email" class="form-control" formControlName="email" placeholder="Email address"
+                    required />
+                  <div class="invalid-feedback"> This is required !! </div>
+                </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-text" id="basic-addon3"><i class="feather icon-lock"></i></span>
+                  <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    required />
+                  <div class="invalid-feedback"> This is required !! </div>
+                </div>
+                <div class="form-group text-start mt-2">
+                  <div class="checkbox checkbox-primary d-inline">
+                    <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="" />
+                    <label for="checkbox-fill-a1" class="cr"> Save credentials</label>
+                  </div>
+                </div>
+                <div class="d-grid">
+                  <button class="btn btn-block btn-primary mb-4">Signin</button>
+                </div>
+              </form>
+              <p class="mb-2 text-muted">Forgot password? <a href="javascriprt:" class="f-w-400">Reset</a></p>
+              <p class="mb-0 text-muted">Don’t have an account? <b>Please contact to your Admin for signup</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

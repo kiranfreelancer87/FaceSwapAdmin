@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Category Entry</strong>
+            </div>
+            <div class="card-body">
+                <div class="row" [formGroup]="categoryForm">
+                    <div class="col-md-6 mb-6">
+                        <label for="fromdate">Categoty Name</label>
+                        <input type="text" class="form-control" formControlName="categoryNameFc" required />
+                        <div class="invalid-feedback"> This is required !! </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-2" *ngIf="!showbtn">
+                    <button type="submit" class="btn btn-primary" (click)="addCategory()">Add Category</button>
+                </div>
+                <div class="col-12 mt-2" *ngIf="showbtn">
+                    <button type="submit" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Category Details</strong>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive gap-2 mt-2">
+                    <table class="table table-styling">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>Slno</th>
+                                <th>Category Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr *ngFor="let cat of allCategory">
+                                <td>{{cat.id}}</td>
+                                <td>{{cat.category}}</td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{cat.id}}" [checked]="cat.status === 'active'" (change)="toggleStatus(cat)">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault{{cat.id}}">
+                                            {{ cat.status === 'active' ? '' : '' }}
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-outline-info btn-sm" type="button" (click)="editCategory(cat)">
+                                        <i class="feather icon-edit"></i>
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn btn-outline-danger btn-sm" type="button" (click)="deleteCategory(cat.id)">
+                                        <i class="feather icon-delete"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
